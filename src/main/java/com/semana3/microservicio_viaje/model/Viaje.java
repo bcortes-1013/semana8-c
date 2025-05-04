@@ -1,9 +1,5 @@
 package com.semana3.microservicio_viaje.model;
 
-import java.time.LocalDate;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +11,6 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Positive;
 
@@ -30,11 +25,6 @@ public class Viaje{
     @Min(value = 1, message = "El ID debe ser mayor a 0")
     @Positive(message = "El ID debe ser un número positivo")
     private Long id;
-
-    @NotNull(message = "La fecha de viaje no puede estar vacía")
-    @FutureOrPresent(message = "No puede ser anterior al día actual")
-    @JsonFormat(pattern = "dd/MM/yy")
-    private LocalDate fechaViaje;
 
     @NotNull(message = "El nombre de cliente no puede estar vacío")
     @Size(min = 1, max = 100, message = "El nombre de cliente no puede ser mayor a 100 carácteres")
